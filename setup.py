@@ -1,3 +1,4 @@
+import os
 from setuptools import setup, find_packages
 
 from helga_urbandictionary import __version__ as version
