@@ -24,4 +24,4 @@ def urbandictionary(client, channel, nick, message, cmd, args):
         error_response = 'No definition found or a problem talking to the api.'
         if response.status_code != 200:
             return error_response
-        return json.loads(response.content).get('definition', error_reponse)
+        return json.loads(response.content).get('definition', error_response)
