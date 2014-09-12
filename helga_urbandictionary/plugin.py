@@ -19,7 +19,7 @@ def urbandictionary(client, channel, nick, message, cmd, args):
         return u'You need to give me a term to look up.'
     else:
         # the api spec says that it wants terms RFC3986 encoded but it lies
-        term = urllib.quote(' '.join(args))
+        term = urllib.quote(''.join(args))
         response = requests.get(_api_host + term)
         error_response = 'No definition found or a problem talking to the api.'
         if response.status_code != 200:
