@@ -22,13 +22,11 @@ def urbandictionary(client, channel, nick, message, cmd, args):
         return u'You need to give me a term to look up.'
     else:
         # the api spec says that it wants terms RFC3986 encoded but it lies
-        pattern = r'\[(\d{1,2})\]'
+        pattern = r'\[(-?\d+)\]'
         num_passed = re.match(pattern, args[-1], re.M)
         if num_passed:
             # we subtract one here because def #1 is the 0 item in the list
             num_requested = int(num_passed.groups()[0]) - 1
-            if num_requested < 0:
-                return "invalid number passed"
             args.pop(-1)
 
         term = urllib.quote(''.join(args))
@@ -41,6 +39,8 @@ def urbandictionary(client, channel, nick, message, cmd, args):
             return error_response
 
         result_list = json.loads(response.content)
+        num_requested = min(num_requested, len(result_list) - 1)
+        num_requested = max(0, num_requested)
         result = result_list[num_requested].get(
             'definition', error_response)
         return result + ' [{0} of {1}]'.format(
