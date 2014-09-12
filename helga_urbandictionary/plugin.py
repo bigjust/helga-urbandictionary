@@ -40,7 +40,8 @@ def urbandictionary(client, channel, nick, message, cmd, args):
         if not response_list:
             return error_response
 
-        result = json.loads(response.content)[num_requested].get(
+        result_list = json.loads(response.content)
+        result = result_list[num_requested].get(
             'definition', error_response)
         return result + ' [{0} of {1}]'.format(
             num_requested + 1, len(result_list))
