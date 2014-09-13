@@ -19,14 +19,13 @@ setup(
     version=version,
     description=('looks up definitions for words on urban dictionary'),
     classifiers=[
-        'Development Status :: 1 - Beta',
-        'Environment :: IRC',
-        'Intended Audience :: Twisted Developers, IRC Bot Developers',
+        'Development Status :: 4 - Beta',
+        'Topic :: Communications :: Chat :: Internet Relay Chat',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
-        'Topic :: IRC Bots'],
+        'Topic :: Communications :: Chat :: Internet Relay Chat'],
     keywords='irc bot urbandictionary',
     author='Michael Orr',
     author_email='michael@orr.co',
@@ -36,7 +35,7 @@ setup(
     include_package_data=True,
     py_modules=['helga-urbandictionary'],
     zip_safe=True,
-    install_requirements=requirements,
+    install_requires=requirements,
     entry_points = dict(
         helga_plugins=[
             'urbandictionary = helga_urbandictionary.plugin:urbandictionary',
