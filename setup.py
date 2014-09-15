@@ -1,21 +1,14 @@
-import os
+from pip.req import parse_requirements
 from setuptools import setup, find_packages
 
 from helga_urbandictionary import __version__ as version
 
-requirements = []
-with open(
-    os.path.join(
-        os.path.dirname(__file__),
-        'requirements.txt',
-    ),
-    'r'
-) as in_:
-    requirements = in_.readlines()
-
+requirements = [
+    str(req.req) for req in parse_requirements('requirements.txt')
+]
 
 setup(
-    name="helga-urbandictionary",
+    name='helga-urbandictionary',
     version=version,
     description=('looks up definitions for words on urban dictionary'),
     classifiers=[
