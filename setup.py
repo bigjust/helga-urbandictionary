@@ -1,11 +1,6 @@
-from pip.req import parse_requirements
 from setuptools import setup, find_packages
 
 from helga_urbandictionary import __version__ as version
-
-requirements = [
-    str(req.req) for req in parse_requirements('requirements.txt')
-]
 
 setup(
     name='helga-urbandictionary',
@@ -28,7 +23,9 @@ setup(
     include_package_data=True,
     py_modules=['helga_urbandictionary.plugin'],
     zip_safe=True,
-    install_requires=requirements,
+    install_requires=[
+        'requests',
+    ],
     entry_points = dict(
         helga_plugins=[
             'urbandictionary = helga_urbandictionary.plugin:urbandictionary',
